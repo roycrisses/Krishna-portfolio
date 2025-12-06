@@ -10,43 +10,6 @@ const Hero: React.FC = () => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
-      // Scramble Text Effect Logic
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-      const scrambleIntervals = new Map<Element, ReturnType<typeof setInterval>>();
-      const scrambleTimeouts = new Map<Element, ReturnType<typeof setTimeout>>();
-
-      const scrambleText = (element: Element) => {
-        const originalText = element.getAttribute('data-original') || element.textContent || "";
-        if (!element.getAttribute('data-original')) {
-          element.setAttribute('data-original', originalText);
-        }
-
-        // Clear existing timers
-        if (scrambleIntervals.has(element)) {
-          clearInterval(scrambleIntervals.get(element));
-          scrambleIntervals.delete(element);
-        }
-        if (scrambleTimeouts.has(element)) {
-          clearTimeout(scrambleTimeouts.get(element));
-          scrambleTimeouts.delete(element);
-        }
-
-        // Start scrambling
-        const interval = setInterval(() => {
-          element.textContent = chars[Math.floor(Math.random() * chars.length)];
-        }, 50);
-        scrambleIntervals.set(element, interval);
-
-        // Stop after 2 seconds and revert
-        const timeout = setTimeout(() => {
-          clearInterval(interval);
-          element.textContent = originalText;
-          scrambleIntervals.delete(element);
-          scrambleTimeouts.delete(element);
-        }, 2000);
-        scrambleTimeouts.set(element, timeout);
-      };
-
       // Typewriter Effect Logic
       const typeText = (element: Element, text: string) => {
         element.textContent = "";
@@ -108,11 +71,22 @@ const Hero: React.FC = () => {
       const titleChars = document.querySelectorAll('.hero-title-char');
       titleChars.forEach(char => {
         char.addEventListener('mouseenter', function (this: Element) {
-          gsap.to(this, { color: '#00f3ff', scale: 1.1, duration: 0.2 });
-          scrambleText(this);
+          gsap.to(this, {
+            scale: 1.1,
+            y: -10,
+            textShadow: "0 0 20px rgba(0, 243, 255, 0.5)",
+            duration: 0.3,
+            ease: "power2.out"
+          });
         });
         char.addEventListener('mouseleave', function (this: Element) {
-          gsap.to(this, { color: 'white', scale: 1, duration: 0.2, delay: 0.5 });
+          gsap.to(this, {
+            scale: 1,
+            y: 0,
+            textShadow: "none",
+            duration: 0.3,
+            ease: "power2.out"
+          });
         });
       });
 
