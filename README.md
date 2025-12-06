@@ -51,11 +51,11 @@ A modern, high-performance portfolio website built with **React**, **TypeScript*
 
 ## 📦 Deployment
 
-This project is configured to deploy automatically to **GitHub Pages** using GitHub Actions.
+GitHub Actions.
 
 - The workflow file is located at `.github/workflows/deploy.yml`.
 - Any push to the `main` branch triggers a build and deploy.
 - **Note:** Ensure you have added your EmailJS secrets to the GitHub Repository Settings > Secrets and variables > Actions.
 
-## 📄 License
+
 
