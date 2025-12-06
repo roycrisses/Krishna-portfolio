@@ -51,7 +51,7 @@ A modern, high-performance portfolio website built with **React**, **TypeScript*
 
 ## 📦 Deployment
 
-GitHub Actions.
+This project is configured to deploy automatically to **GitHub Pages** using GitHub Actions.
 
 - The workflow file is located at `.github/workflows/deploy.yml`.
 - Any push to the `main` branch triggers a build and deploy.
