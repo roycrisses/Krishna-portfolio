@@ -64,6 +64,13 @@ export const PROJECTS: Project[] = [
 
 export const EXPERIENCES: Experience[] = [
   {
+    id: 0,
+    year: "2026",
+    title: "Pursuing BIT (Bachelor of Information Technology)",
+    organization: "Far Western University",
+    description: "Currently pursuing Bachelor's degree in Information Technology."
+  },
+  {
     id: 1,
     year: "2025",
     title: "Senior Web Developer",

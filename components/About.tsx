@@ -75,7 +75,7 @@ const About: React.FC = () => {
             {/* Text that lights up on scroll */}
             <div ref={textContainerRef} className="space-y-8 text-2xl md:text-3xl font-light leading-relaxed max-w-xl scrub-text text-gray-700">
               <p>
-                <span>I</span> <span>am</span> <span>Krishna</span> <span>Karki</span> <span>(Krish),</span> <span>a</span> <span>19-year-old</span> <span>multidisciplinary</span> <span>developer</span> <span>and</span> <span>designer</span> <span>based</span> <span>in</span> <span>Nepal.</span>
+                <span>I</span> <span>am</span> <span>Krishna</span> <span>Karki</span> <span>(Krish),</span> <span>a</span> <span>20-year-old</span> <span>multidisciplinary</span> <span>developer</span> <span>and</span> <span>designer</span> <span>based</span> <span>in</span> <span>Nepal.</span>
               </p>
               <p>
                 <span>I</span> <span>operate</span> <span>at</span> <span>the</span> <span>intersection</span> <span>of</span> <span className="font-medium">design</span> <span>and</span> <span className="font-medium">engineering</span>. <span>My</span> <span>work</span> <span>is</span> <span>driven</span> <span>by</span> <span>the</span> <span>belief</span> <span>that</span> <span>software</span> <span>should</span> <span>not</span> <span>just</span> <span>function,</span> <span>but</span> <span>perform</span> <span>elegantly.</span>
@@ -89,7 +89,7 @@ const About: React.FC = () => {
             <div className="grid grid-cols-2 gap-8 mt-20 pt-8 border-t border-white/10 about-line">
               <div>
                 <span className="block text-xs uppercase tracking-widest text-gray-600 mb-2">Age</span>
-                <span className="text-3xl font-display font-bold text-white">19</span>
+                <span className="text-3xl font-display font-bold text-white">20</span>
               </div>
               <div>
                 <span className="block text-xs uppercase tracking-widest text-gray-600 mb-2">Projects</span>
