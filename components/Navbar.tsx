@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
           <div className="relative w-10 h-10 flex items-center justify-center">
             {/* Abstract R/K logo mark inspired by the image */}
             <img
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}images/logo.png`}
               alt="Logo"
               className="w-full h-full object-contain group-hover:opacity-80 transition-opacity duration-300"
             />

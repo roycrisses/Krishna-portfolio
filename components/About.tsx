@@ -53,7 +53,7 @@ const About: React.FC = () => {
             <div className="relative w-full aspect-[3/4] overflow-hidden bg-white/5 group rounded-sm">
               <div className="about-img-reveal w-full h-full">
                 <img
-                  src="/profile.png"
+                  src={`${import.meta.env.BASE_URL}images/profile.png`}
                   alt="Krishna Karki"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
