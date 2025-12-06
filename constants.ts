@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
     title: "Cascade AI Agent",
     category: "AI/ML",
     description: "An intelligent AI coding agent built to assist developers with code generation and problem-solving.",
-    image: `${import.meta.env.BASE_URL}images/cascade-preview-v2.png`,
+    image: `${import.meta.env.BASE_URL}images/cascade-preview.png`,
     tags: ["AI", "React", "TypeScript"],
     link: "https://cascade-ai-agent.netlify.app/",
     previewMode: 'image'
