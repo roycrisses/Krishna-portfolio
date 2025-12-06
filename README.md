@@ -59,4 +59,3 @@ This project is configured to deploy automatically to **GitHub Pages** using Git
 
 ## 📄 License
 
-© 2025 Krishna Karki. All rights reserved.
