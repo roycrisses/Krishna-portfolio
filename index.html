@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Krishna Karki (Krish) | Portfolio</title>
+    <meta name="description" content="Portfolio of Krishna Karki - Programmer, Designer & Student." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+            colors: {
+              neon: {
+                DEFAULT: '#00f3ff',
+                glow: 'rgba(0, 243, 255, 0.5)',
+                dark: '#00a3cc'
+              },
+              dark: {
+                bg: '#050505',
+                card: '#0a0a0a',
+                surface: '#121212'
+              }
+            },
+            backgroundImage: {
+              'grid-pattern': "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)",
+            },
+            animation: {
+              'scroll-drop': 'scrollDrop 2s ease-in-out infinite',
+            },
+            keyframes: {
+              scrollDrop: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(200%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      body {
+        background-color: #050505;
+        color: #ffffff;
+        cursor: none; /* Custom cursor */
+        overflow-x: hidden;
+      }
+      
+      /* Scrollbar hiding for cleaner look */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050505;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00f3ff;
+      }
+
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+        color: transparent;
+      }
+      
+      .clip-path-slant {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      }
+
+      /* Noise overlay */
+      .noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.03;
+        background: url('https://grainy-gradients.vercel.app/noise.svg');
+      }
+      
+      /* Utilities usually in modern CSS but ensuring support */
+      .writing-vertical-lr {
+        writing-mode: vertical-lr;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "gsap/": "https://aistudiocdn.com/gsap@^3.13.0/",
+    "gsap": "https://aistudiocdn.com/gsap@^3.13.0",
+    "lenis": "https://aistudiocdn.com/lenis@^1.3.15"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <div class="noise"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
