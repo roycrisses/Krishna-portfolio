@@ -12,28 +12,39 @@ const Hero: React.FC = () => {
 
       // Scramble Text Effect Logic
       const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+      const scrambleIntervals = new Map<Element, ReturnType<typeof setInterval>>();
+      const scrambleTimeouts = new Map<Element, ReturnType<typeof setTimeout>>();
+
       const scrambleText = (element: Element) => {
-        const originalText = element.textContent || "";
-        const length = originalText.length;
-        let iteration = 0;
+        const originalText = element.getAttribute('data-original') || element.textContent || "";
+        if (!element.getAttribute('data-original')) {
+          element.setAttribute('data-original', originalText);
+        }
 
+        // Clear existing timers
+        if (scrambleIntervals.has(element)) {
+          clearInterval(scrambleIntervals.get(element));
+          scrambleIntervals.delete(element);
+        }
+        if (scrambleTimeouts.has(element)) {
+          clearTimeout(scrambleTimeouts.get(element));
+          scrambleTimeouts.delete(element);
+        }
+
+        // Start scrambling
         const interval = setInterval(() => {
-          element.textContent = originalText
-            .split("")
-            .map((letter, index) => {
-              if (index < iteration) {
-                return originalText[index];
-              }
-              return chars[Math.floor(Math.random() * chars.length)];
-            })
-            .join("");
+          element.textContent = chars[Math.floor(Math.random() * chars.length)];
+        }, 50);
+        scrambleIntervals.set(element, interval);
 
-          if (iteration >= length) {
-            clearInterval(interval);
-          }
-
-          iteration += 1 / 3;
-        }, 30);
+        // Stop after 2 seconds and revert
+        const timeout = setTimeout(() => {
+          clearInterval(interval);
+          element.textContent = originalText;
+          scrambleIntervals.delete(element);
+          scrambleTimeouts.delete(element);
+        }, 2000);
+        scrambleTimeouts.set(element, timeout);
       };
 
       // Typewriter Effect Logic
