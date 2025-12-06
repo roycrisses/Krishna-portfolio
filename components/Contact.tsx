@@ -36,21 +36,32 @@ const Contact: React.FC = () => {
         setLoading(true);
         setStatus({ type: null, message: '' });
 
-        // These IDs should come from your .env file
-        // Service ID, Template ID, Public Key
-        emailjs.sendForm(
-            import.meta.env.VITE_EMAILJS_SERVICE_ID,
-            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-            formRef.current,
-            import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-        )
-            .then((result) => {
-                setLoading(false);
-                setStatus({ type: 'success', message: 'Message sent successfully!' });
-                if (formRef.current) formRef.current.reset();
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+        const contactTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID;
 
-                // Clear success message after 5 seconds
-                setTimeout(() => setStatus({ type: null, message: '' }), 5000);
+        // Send the main contact email to you
+        emailjs.sendForm(serviceId, contactTemplateId, formRef.current, publicKey)
+            .then((result) => {
+                // After main email is sent, send auto-reply to user
+                if (formRef.current) {
+                    emailjs.sendForm(serviceId, autoReplyTemplateId, formRef.current, publicKey)
+                        .then(() => {
+                            setLoading(false);
+                            setStatus({ type: 'success', message: 'Message sent successfully!' });
+                            if (formRef.current) formRef.current.reset();
+                            setTimeout(() => setStatus({ type: null, message: '' }), 5000);
+                        })
+                        .catch((error) => {
+                            // Main email sent, but auto-reply failed - still show success
+                            console.error('Auto-reply failed:', error.text);
+                            setLoading(false);
+                            setStatus({ type: 'success', message: 'Message sent successfully!' });
+                            if (formRef.current) formRef.current.reset();
+                            setTimeout(() => setStatus({ type: null, message: '' }), 5000);
+                        });
+                }
             }, (error) => {
                 setLoading(false);
                 setStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
