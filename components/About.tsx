@@ -45,7 +45,7 @@ const About: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-20 items-start">
 
           {/* Left Column - Big Label & Image (Sticky) */}
-          <div className="w-full lg:w-5/12 sticky top-24">
+          <div className="w-full lg:w-5/12 lg:sticky top-24 z-0">
             <span className="block text-xs font-medium tracking-[0.25em] uppercase text-gray-500 mb-8 md:mb-16">
               (01) — Profile
             </span>
@@ -65,7 +65,7 @@ const About: React.FC = () => {
           </div>
 
           {/* Right Column - Editorial Text */}
-          <div className="w-full lg:w-7/12 pt-10 lg:pt-32">
+          <div className="w-full lg:w-7/12 pt-10 lg:pt-32 relative z-10">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold font-display leading-[0.9] tracking-tight mb-12 text-white mix-blend-difference">
               CRAFTING <br />
               DIGITAL <br />
