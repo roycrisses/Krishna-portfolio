@@ -100,7 +100,13 @@ const Projects: React.FC = () => {
                                 {/* Right - Live Website Preview */}
                                 <div className="relative h-[300px] lg:h-auto overflow-hidden rounded-xl order-1 lg:order-2 bg-dark-surface">
                                     <div className="absolute inset-0 bg-neon/10 mix-blend-color z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                                    {project.link ? (
+                                    {project.previewMode === 'image' && project.image ? (
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-full min-h-[300px] lg:min-h-[400px] object-cover object-top"
+                                        />
+                                    ) : project.link ? (
                                         <iframe
                                             src={project.link}
                                             title={project.title}
