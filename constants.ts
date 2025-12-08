@@ -110,6 +110,6 @@ export const EXPERIENCES: Experience[] = [
 export const CONTACT_INFO = {
   phone1: "9700804395",
   phone2: "9868760150",
-  email: "krishna21karki@gmail.com",
+  email: "kris12karki@gmail.com",
   location: "Krishnapur-02, Kanchanpur, Nepal"
 };
