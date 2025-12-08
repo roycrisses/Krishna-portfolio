@@ -1,6 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { Instagram, Facebook, Twitter, Github } from 'lucide-react';
+import { getGlobalAudioManager } from '../hooks/useAudioManager';
+import AudioControl from './AudioControl';
+
+const playHoverSound = () => {
+  const manager = getGlobalAudioManager();
+  if (manager) manager.playSound('hover');
+};
+
+const playClickSound = () => {
+  const manager = getGlobalAudioManager();
+  if (manager) manager.playSound('click');
+};
 
 const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -123,10 +135,10 @@ const Hero: React.FC = () => {
 
       {/* Socials - Bottom Left */}
       <div className="absolute bottom-12 left-8 md:left-12 hidden md:flex flex-col gap-8 z-20">
-        <a href="https://github.com/roycrisses" target="_blank" rel="noopener noreferrer" className="social-icon text-gray-500 hover:text-white transition-colors hover-trigger transform hover:-translate-y-1 duration-300"><Github size={20} /></a>
-        <a href="https://x.com/m_Krishnakarki" target="_blank" rel="noopener noreferrer" className="social-icon text-gray-500 hover:text-white transition-colors hover-trigger transform hover:-translate-y-1 duration-300"><Twitter size={20} /></a>
-        <a href="https://www.facebook.com/krishna.karki.739201" target="_blank" rel="noopener noreferrer" className="social-icon text-gray-500 hover:text-white transition-colors hover-trigger transform hover:-translate-y-1 duration-300"><Facebook size={20} /></a>
-        <a href="https://www.instagram.com/krishnakarki_019/" target="_blank" rel="noopener noreferrer" className="social-icon text-gray-500 hover:text-white transition-colors hover-trigger transform hover:-translate-y-1 duration-300"><Instagram size={20} /></a>
+        <a href="https://github.com/roycrisses" target="_blank" rel="noopener noreferrer" className="social-icon text-gray-500 hover:text-white transition-colors hover-trigger transform hover:-translate-y-1 duration-300" onMouseEnter={playHoverSound} onClick={playClickSound}><Github size={20} /></a>
+        <a href="https://x.com/m_Krishnakarki" target="_blank" rel="noopener noreferrer" className="social-icon text-gray-500 hover:text-white transition-colors hover-trigger transform hover:-translate-y-1 duration-300" onMouseEnter={playHoverSound} onClick={playClickSound}><Twitter size={20} /></a>
+        <a href="https://www.facebook.com/krishna.karki.739201" target="_blank" rel="noopener noreferrer" className="social-icon text-gray-500 hover:text-white transition-colors hover-trigger transform hover:-translate-y-1 duration-300" onMouseEnter={playHoverSound} onClick={playClickSound}><Facebook size={20} /></a>
+        <a href="https://www.instagram.com/krishnakarki_019/" target="_blank" rel="noopener noreferrer" className="social-icon text-gray-500 hover:text-white transition-colors hover-trigger transform hover:-translate-y-1 duration-300" onMouseEnter={playHoverSound} onClick={playClickSound}><Instagram size={20} /></a>
       </div>
 
       {/* Scroll - Bottom Right */}
@@ -137,19 +149,24 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
+      {/* Audio Control - Bottom Center */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20">
+        <AudioControl />
+      </div>
+
       {/* Main Content */}
       <div className="relative z-10 text-center flex flex-col items-center w-full max-w-[90vw]">
         <p className="hero-sub text-sm md:text-base font-light tracking-[0.4em] mb-2 md:mb-4 text-gray-400 uppercase">I am</p>
 
         <div className="hero-title relative cursor-default">
           <h1 ref={titleRef} className="text-[18vw] md:text-[14rem] font-bold font-display leading-[0.85] tracking-tighter text-white mix-blend-exclusion select-none">
-            <span className="inline-block hero-title-char hover:text-neon transition-colors">K</span>
-            <span className="inline-block hero-title-char hover:text-neon transition-colors">R</span>
-            <span className="inline-block hero-title-char hover:text-neon transition-colors">I</span>
-            <span className="inline-block hero-title-char hover:text-neon transition-colors">S</span>
-            <span className="inline-block hero-title-char hover:text-neon transition-colors">H</span>
-            <span className="inline-block hero-title-char hover:text-neon transition-colors">N</span>
-            <span className="inline-block hero-title-char hover:text-neon transition-colors">A</span>
+            <span className="inline-block hero-title-char hover:text-neon transition-colors" onMouseEnter={playHoverSound}>K</span>
+            <span className="inline-block hero-title-char hover:text-neon transition-colors" onMouseEnter={playHoverSound}>R</span>
+            <span className="inline-block hero-title-char hover:text-neon transition-colors" onMouseEnter={playHoverSound}>I</span>
+            <span className="inline-block hero-title-char hover:text-neon transition-colors" onMouseEnter={playHoverSound}>S</span>
+            <span className="inline-block hero-title-char hover:text-neon transition-colors" onMouseEnter={playHoverSound}>H</span>
+            <span className="inline-block hero-title-char hover:text-neon transition-colors" onMouseEnter={playHoverSound}>N</span>
+            <span className="inline-block hero-title-char hover:text-neon transition-colors" onMouseEnter={playHoverSound}>A</span>
           </h1>
         </div>
 

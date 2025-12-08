@@ -18,7 +18,7 @@ const App: React.FC = () => {
       <CustomCursor />
       <BackgroundLights />
       <Navbar />
-      
+
       <main className="relative z-10">
         <Hero />
         <About />

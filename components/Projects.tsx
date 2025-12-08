@@ -2,9 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { PROJECTS } from '../constants';
 import { ArrowUpRight } from 'lucide-react';
+import { getGlobalAudioManager } from '../hooks/useAudioManager';
 
 const Projects: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const soundPlayedRef = useRef<Set<number>>(new Set());
 
     useEffect(() => {
         // No complex JS needed for basic sticky stacking, CSS does the heavy lifting.
@@ -19,6 +21,17 @@ const Projects: React.FC = () => {
                         start: "top top",
                         end: "bottom top",
                         scrub: true,
+                        onEnter: () => {
+                            // Play transition sound when each card starts stacking
+                            if (!soundPlayedRef.current.has(index)) {
+                                const manager = getGlobalAudioManager();
+                                if (manager) manager.playSound('transition');
+                                soundPlayedRef.current.add(index);
+                            }
+                        },
+                        onLeaveBack: () => {
+                            soundPlayedRef.current.delete(index);
+                        }
                     },
                     scale: 1 - (cards.length - index) * 0.05, // Slight shrink effect as it stacks
                     opacity: 1 - (cards.length - index) * 0.1,

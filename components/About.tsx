@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { getGlobalAudioManager } from '../hooks/useAudioManager';
 
 const About: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);
+  const soundPlayedRef = useRef(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -19,8 +21,7 @@ const About: React.FC = () => {
         ease: "expo.out"
       });
 
-      // Text Highlight Scrub Effect
-      // We split text into words or lines and change opacity based on scroll
+      // Text Highlight Scrub Effect with sound
       const spans = gsap.utils.toArray<HTMLElement>('.scrub-text span');
 
       gsap.to(spans, {
@@ -29,6 +30,17 @@ const About: React.FC = () => {
           start: "top 70%",
           end: "bottom 70%",
           scrub: 1,
+          onEnter: () => {
+            // Play transition sound when text animation starts
+            if (!soundPlayedRef.current) {
+              const manager = getGlobalAudioManager();
+              if (manager) manager.playSound('transition');
+              soundPlayedRef.current = true;
+            }
+          },
+          onLeaveBack: () => {
+            soundPlayedRef.current = false;
+          }
         },
         color: "#ffffff",
         stagger: 0.1,
