@@ -22,6 +22,16 @@ export const SKILLS = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
+    title: "Olive Cafe",
+    category: "Web Development",
+    description: "A beautifully designed cafe website featuring modern aesthetics, smooth animations, and an elegant user experience.",
+    image: "https://picsum.photos/800/600?random=5",
+    tags: ["React", "CSS", "Animations"],
+    link: "https://olive-cafe.netlify.app/",
+    previewMode: 'iframe'
+  },
+  {
+    id: 2,
     title: "EasyWay Technology",
     category: "Web Development",
     description: "Corporate website for EasyWay Technology offering digital solutions and tech services.",
@@ -31,7 +41,7 @@ export const PROJECTS: Project[] = [
     previewMode: 'iframe'
   },
   {
-    id: 2,
+    id: 3,
     title: "EasyWay Groups",
     category: "Web Development",
     description: "Professional website for EasyWay Groups showcasing their business portfolio and services.",
@@ -41,7 +51,7 @@ export const PROJECTS: Project[] = [
     previewMode: 'iframe'
   },
   {
-    id: 3,
+    id: 4,
     title: "Cascade AI Agent",
     category: "AI/ML",
     description: "An intelligent AI coding agent built to assist developers with code generation and problem-solving.",
@@ -51,7 +61,7 @@ export const PROJECTS: Project[] = [
     previewMode: 'image'
   },
   {
-    id: 4,
+    id: 5,
     title: "Unicode Aarthasarokar",
     category: "Web Development",
     description: "A comprehensive web platform for Unicode Aarthasarokar with modern design and functionality.",
